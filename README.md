@@ -1,6 +1,11 @@
 # aws-playground-app
 
-This project showcases how to deploy a Quarkus-based AWS Lambda function via the AWS CDK.
+This project showcases how to deploy a Quarkus-based application in a cost-efficient manner to AWS Lambda and S3 via the AWS CDK.
+The application is a "standard" application containing a Web-based frontend and a Quarkus-based backend that exposes a Restful API for the frontend.
+The front is deployed to an S3 bucket whereas the backend is deployed as AWS lambda thanks to the great/abstraction provided in Quarkus.
+The backend is developed as a standard JAX-RS endpoint that can be tested locally and then run on AWS lambda without any AWS lambda specific code.
+
+The idea for this approach is to host applications which are only used infrequently e.g. for personal projects and thus should be as cost-efficient as possible.
 
 ## Installation
 
