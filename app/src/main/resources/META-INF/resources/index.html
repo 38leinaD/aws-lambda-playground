@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World</title>
+    <script src="env.js"></script>
+</head>
+<body>
+    <h1>Hello World!</h1>
+    <div id="result">...</div>
+    <script>
+
+        function printResult(result, isError=false) {
+            const div = document.querySelector('#result');
+            div.style.color = isError ? 'red' : 'green';
+            div.innerText = result;
+        }
+
+        async function init() {
+            try {
+                const response = await fetch(`${BACKEND_URL}/api`);
+
+                if (response.status != '200') {
+                    printResult(`Response Status-Code is ${response.status}.`, true)
+                    return;
+                }
+                const text = await response.text();
+                printResult("Server-result: " + text);
+
+            }
+            catch (e) {
+                printResult(e, true)
+            }
+        }
+
+        init();
+
+    </script>
+</body>
+</html>
